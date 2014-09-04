@@ -4,7 +4,7 @@ Plugin Name: Adsense In Posts
 Plugin URI: http://www.techrival.com
 Description: Insert Google Adsense ads automatically to your blog posts and pages.
 Version: 1.0
-Author: Moiz
+Author: MoizDev
 Author URI: http://www.techrival.com
 */
 
