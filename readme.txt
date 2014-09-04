@@ -1,5 +1,5 @@
 ﻿=== Plugin Name ===
-Contributors: Moiz
+Contributors: MoizDev
 Donate link: http://www.techrival.com
 Tags: google, ad, widget, sidebar, adsense
 Requires at least: 2.8
