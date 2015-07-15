@@ -3,12 +3,12 @@
 Plugin Name: Adsense In Posts
 Plugin URI: http://www.techrival.com
 Description: Insert Google Adsense ads automatically to your blog posts and pages.
-Version: 1.5
+Version: 1.6
 Author: MoizDev
 Author URI: http://www.techrival.com
 */
 
-$adoptadspacesharing=1; if (!class_exists("adopt")) { class adopt { var $adopt_version = "1.5"; var $adopt_menu = "adsense-in-posts"; var $loopdone = 0; var $postlen = 0; var $postcount = 0; var $opts; var $adincontent = 0; function adopt() { $this->getOpts(); } function getOpts() { if (isset($this->opts) AND !empty($this->opts)) {return;} $this->opts=get_option("adsenseinposts"); if (!empty($this->opts)) {return;} $this->opts=Array ( 'usertype' => '', 'gen_id' => '000000000000000', 'don_id' => '000000000000000', 'donate' => 0, 'overrule' => 1, 'adtest' => 1, 'adsection' => 1, 'gen_channel' => '0000000000', 'don_channel' => '0000000000', 'type' => Array(1=>'text_image',2=>'text_image',3=>'text_image',4=>'text_image',5=>'text_image',6=>'link',7=>'link',8=>'link'), 'corner' => Array (1 =>'rc:0',2=>'rc:0',3=>'rc:0',4=>'rc:0',5=>'rc:0',6=>'rc:0',7=>'rc:0',8=>'rc:0' ), 'padding' => Array (1=>7,2=>7,3=>7,4=>7,5=>7,6=>7,7=>7,8=>7), 'id' => Array (1=>"",2=>"",3=>"",4=>"",5=>"",6=>"",7=>"",8=>""), 'channel' => Array (1=>"",2=>"",3=>"",4=>"",5=>"",6=>"",7=>"",8=>""), 'desc' => Array (1=>'Describe your adtypes here ', 2=>''), 'size' => Array ( 1 => Array ( '336x280' => 1, '300x250' => 0, '728x90' => 0, '160x600' => 0, '468x60' => 0, '120x600' => 0, '250x250' => 0, '200x200' => 0, '125x125' => 0, '234x60' => 0 , '180x150' => 0, '120x240' => 0), 2 => Array ( '336x280' => 1, '300x250' => 0, '728x90' => 0, '160x600' => 0, '468x60' => 0, '120x600' => 0, '250x250' => 0, '200x200' => 0, '125x125' => 0, '234x60' => 0 , '180x150' => 0, '120x240' => 0 ), 3 => Array ( '336x280' => 0, '300x250' => 0, '728x90' => 0, '160x600' => 0, '468x60' => 1, '120x600' => 0, '250x250' => 0, '200x200' => 0, '125x125' => 0, '234x60' => 0 , '180x150' => 0, '120x240' => 0 ), 4 => Array ( '336x280' => 1, '300x250' => 0, '728x90' => 0, '160x600' => 0, '468x60' => 0, '120x600' => 0, '250x250' => 0, '200x200' => 0, '125x125' => 0, '234x60' => 0 , '180x150' => 0, '120x240' => 0), 5 => Array ( '336x280' => 0, '300x250' => 0, '728x90' => 0, '160x600' => 0, '468x60' => 0, '120x600' => 1, '250x250' => 0, '200x200' => 0, '125x125' => 0, '234x60' => 0 , '180x150' => 0, '120x240' => 0)), 'lbsize' => Array ( 6 => Array ( '728x15' => 1, '468x15' => 0, '200x90' => 0, '180x90' => 0, '160x90' => 0, '120x90' => 0), 7 => Array ( '728x15' => 0, '468x15' => 1, '200x90' => 0, '180x90' => 0, '160x90' => 0, '120x90' => 0), 8 => Array ( '728x15' => 0, '468x15' => 0, '200x90' => 0, '180x90' => 0, '160x90' => 1, '120x90' => 0)), 'col_border' => Array ( 1 => '336699', 2 => 'E3FA11', 3 => 'CCCCCC', 4 => '0A141F', 5 => '6699CC',6=>'000000',7=>'E3FA11',8=>'CCCCCC' ), 'col_link' => Array ( 1 => '0000FF', 2 => 'FFFFFF', 3 => '000000', 4 => '21DAFF', 5 => 'FFFFFF',6=>'FFFFFF',7=>'FFFFFF',8=>'000000' ), 'col_bg' => Array ( 1 => 'FFFFFF', 2 => 'A2AB2B', 3 => 'CCCCCC', 4 => '000000', 5 => '003366',6=>'000000',7=>'A2AB2B',8=>'CCCCCC' ), 'col_text' => Array ( 1 => '000000', 2 => '000000', 3 => '333333', 4 => 'DEDEDE', 5 => 'AECCEB',6=>'CCCCCC',7=>'000000',8=>'333333' ), 'col_url' => Array ( 1 => '008000', 2 => 'FFFFFF', 3 => '666666', 4 => '21DAFF', 5 => 'AECCEB',6=>'999999',7=>'FFFFFF',8=>'666666'), 'single' => Array ( 1 => 1, 2 => 2, 3 => 3 ), 'single_pos' => Array ( 1 => 'Top', 2 => 'Middle', 3 => 'Bottom' ), 'single_align' => Array ( 1 => 'left', 2 => 'right', 3 => 'center' ), 'single_long' => Array ( 1 => '', 2 => '2300', 3 => '5000'), 'multi' => Array ( 1 => 1, 2 => 2, 3 => 1 ), 'multi_pos' => Array ( 1 => 1, 2 => 4, 3 => 8 ), 'multi_align' => Array ( 1 => 'right', 2 => 'left', 3 => 'center' ), 'only_tagged' => 0, 'omit_page' => 0, 'omit_home' => 0, 'omit_search' => 0, 'omit_category' => 0, 'omit_tag' => 0, 'omit_date' => 0, 'omit_author' => 0 ) ; } function adsenseoptimize($content) { if (is_feed()) return $content; if ($this->opts['adsection']) { $content = '<!-- google_ad_section_start -->'.$content.'<!-- google_ad_section_end -->'; } if (!is_single() AND !is_page()) {return $content;} if($this->opts['usertype']=="pro") $pro=1; else $pro=0; if(is_page() AND $pro AND $this->opts['omit_page']) return $content; if ($this->opts['only_tagged'] AND $pro AND !strpos($content,"<!--adsenseopt-->")) return $content; if (strpos($content,"<!--noad-->")) return $content; $this->postlen=strlen($content); if ($pro AND $this->opts['make_battle']) { $bt=mt_rand(1,2); $adtype=$this->opts['battle_type'][$bt]; switch ($this->opts['battle_pos'][$bt]){ case "Top": $content='<!--adopthere-->'.$content; break; case "Bottom": $content=$content.'<!--adopthere-->'; break; case "Middle": $a= $this->findNodes($content); $cnt=round(count($a)/2); $pos=$a[$cnt-1][1]; $result= substr_replace($content, '<!--adopthere-->', $pos, 0); $content=$result; break; } $code=$this->generateAd($adtype, $this->opts['battle_channel'][$bt]); if($code) { $code=$this->prepare_ad_code($code, $this->opts['battle_align'][$bt], $this->opts['padding'][$adtype]); $content = str_replace('<!--adopthere-->', html_entity_decode($code), $content); } else { $content = str_replace('<!--adopthere-->', '<!-- Google adsense Adsense in Posts failed - tried to add more than 3 ads per page -->', $content); } } for ($i = 1; $i <= 5; $i++) { if ($this->opts['single'][$i]>0 AND (($this->opts['single_long'][$i]=="") OR ($this->postlen>$this->opts['single_long'][$i]))) { $adtype=$this->opts['single'][$i]; switch ($this->opts['single_pos'][$i]){ case "Top": $content='<!--adopthere-->'.$content; break; case "Bottom": $content=$content.'<!--adopthere-->'; break; case "Middle": $a= $this->findNodes($content); $cnt=round(count($a)/2); $pos=$a[$cnt-1][1]; $result= substr_replace($content, '<!--adopthere-->', $pos, 0); $content=$result; break; case "Random": $a= $this->findNodes($content); $cnt=mt_rand(1,count($a)); $pos=$a[$cnt][1]; $result= substr_replace($content, '<!--adopthere-->', $pos, 0); $content=$result; break; case "tag": str_replace('<!--adsenseopt-->', '<!--adopthere-->', $content); break; } $code=$this->generateAd($adtype); if($code) { $code=$this->prepare_ad_code($code, $this->opts['single_align'][$i], $this->opts['padding'][$i]); $content = str_replace('<!--adopthere-->', html_entity_decode($code), $content); } else { $content = str_replace('<!--adopthere-->', '<!-- Google adsense ads injection by Adsense Insert (http://www.techrival.com) failed - tried to add more than 3 ads per page -->', $content); } } } return $content; } function findNodes($str) { $pattern='&\[gallery\]|\<\/p*\>|\<br\>|\<br\s\/\>|\<br\/\>&iU'; return preg_split($pattern, $str, 0, PREG_SPLIT_OFFSET_CAPTURE); } function generateAd($type, $channel=0){ if($this->opts['type'][$type]=="link") return $this->generateLbAd($type, $channel); global $c, $i, $user_level; $this->nrofads++; if (!$this->opts['overrule'] AND $this->nrofads > 3) {return false;} if (!$channel) {if ($this->opts['channel'][$type]!="") {$c=$this->opts['channel'][$type];} else {$c=$this->opts['gen_channel'];}} else $c=$channel; if ($this->opts['id'][$type]) $i=$this->opts['id'][$type]; else $i=$this->opts['gen_id']; $this->ioc(); $code = "<!-- Ad number: ".$this->nrofads." -->"; if (!is_array($this->opts['size'][$type])) {$width=300; $height=250; $size="300x250";} else { $keys=array_keys($this->opts['size'][$type], 1); if (!$keys OR count($keys) < 1) { $width=300; $height=250; $size="300x250"; } else { shuffle($keys); $size=$keys[0]; $dims=explode("x",$size); $width=$dims[0]; $height=$dims[1]; } } if(mt_rand(0,100)<=$this->opts['donate']){$i=$this->opts['don_id']; $c=$this->opts['don_channel'];} if ($user_level > 8 AND $this->opts['adtest']) $adtest='google_adtest="on";'; else $adtest=''; $code .= '<script type="text/javascript"><!--
+$adoptadspacesharing=1; if (!class_exists("adopt")) { class adopt { var $adopt_version = "1.6"; var $adopt_menu = "adsense-in-posts"; var $loopdone = 0; var $postlen = 0; var $postcount = 0; var $opts; var $adincontent = 0; function adopt() { $this->getOpts(); } function getOpts() { if (isset($this->opts) AND !empty($this->opts)) {return;} $this->opts=get_option("adsenseinposts"); if (!empty($this->opts)) {return;} $this->opts=Array ( 'usertype' => '', 'gen_id' => '000000000000000', 'don_id' => '000000000000000', 'donate' => 0, 'overrule' => 1, 'adtest' => 1, 'adsection' => 1, 'gen_channel' => '0000000000', 'don_channel' => '0000000000', 'type' => Array(1=>'text_image',2=>'text_image',3=>'text_image',4=>'text_image',5=>'text_image',6=>'link',7=>'link',8=>'link'), 'corner' => Array (1 =>'rc:0',2=>'rc:0',3=>'rc:0',4=>'rc:0',5=>'rc:0',6=>'rc:0',7=>'rc:0',8=>'rc:0' ), 'padding' => Array (1=>7,2=>7,3=>7,4=>7,5=>7,6=>7,7=>7,8=>7), 'id' => Array (1=>"",2=>"",3=>"",4=>"",5=>"",6=>"",7=>"",8=>""), 'channel' => Array (1=>"",2=>"",3=>"",4=>"",5=>"",6=>"",7=>"",8=>""), 'desc' => Array (1=>'Describe your adtypes here ', 2=>''), 'size' => Array ( 1 => Array ( '336x280' => 1, '300x250' => 0, '728x90' => 0, '160x600' => 0, '468x60' => 0, '120x600' => 0, '250x250' => 0, '200x200' => 0, '125x125' => 0, '234x60' => 0 , '180x150' => 0, '120x240' => 0), 2 => Array ( '336x280' => 1, '300x250' => 0, '728x90' => 0, '160x600' => 0, '468x60' => 0, '120x600' => 0, '250x250' => 0, '200x200' => 0, '125x125' => 0, '234x60' => 0 , '180x150' => 0, '120x240' => 0 ), 3 => Array ( '336x280' => 0, '300x250' => 0, '728x90' => 0, '160x600' => 0, '468x60' => 1, '120x600' => 0, '250x250' => 0, '200x200' => 0, '125x125' => 0, '234x60' => 0 , '180x150' => 0, '120x240' => 0 ), 4 => Array ( '336x280' => 1, '300x250' => 0, '728x90' => 0, '160x600' => 0, '468x60' => 0, '120x600' => 0, '250x250' => 0, '200x200' => 0, '125x125' => 0, '234x60' => 0 , '180x150' => 0, '120x240' => 0), 5 => Array ( '336x280' => 0, '300x250' => 0, '728x90' => 0, '160x600' => 0, '468x60' => 0, '120x600' => 1, '250x250' => 0, '200x200' => 0, '125x125' => 0, '234x60' => 0 , '180x150' => 0, '120x240' => 0)), 'lbsize' => Array ( 6 => Array ( '728x15' => 1, '468x15' => 0, '200x90' => 0, '180x90' => 0, '160x90' => 0, '120x90' => 0), 7 => Array ( '728x15' => 0, '468x15' => 1, '200x90' => 0, '180x90' => 0, '160x90' => 0, '120x90' => 0), 8 => Array ( '728x15' => 0, '468x15' => 0, '200x90' => 0, '180x90' => 0, '160x90' => 1, '120x90' => 0)), 'col_border' => Array ( 1 => '336699', 2 => 'E3FA11', 3 => 'CCCCCC', 4 => '0A141F', 5 => '6699CC',6=>'000000',7=>'E3FA11',8=>'CCCCCC' ), 'col_link' => Array ( 1 => '0000FF', 2 => 'FFFFFF', 3 => '000000', 4 => '21DAFF', 5 => 'FFFFFF',6=>'FFFFFF',7=>'FFFFFF',8=>'000000' ), 'col_bg' => Array ( 1 => 'FFFFFF', 2 => 'A2AB2B', 3 => 'CCCCCC', 4 => '000000', 5 => '003366',6=>'000000',7=>'A2AB2B',8=>'CCCCCC' ), 'col_text' => Array ( 1 => '000000', 2 => '000000', 3 => '333333', 4 => 'DEDEDE', 5 => 'AECCEB',6=>'CCCCCC',7=>'000000',8=>'333333' ), 'col_url' => Array ( 1 => '008000', 2 => 'FFFFFF', 3 => '666666', 4 => '21DAFF', 5 => 'AECCEB',6=>'999999',7=>'FFFFFF',8=>'666666'), 'single' => Array ( 1 => 1, 2 => 2, 3 => 3 ), 'single_pos' => Array ( 1 => 'Top', 2 => 'Middle', 3 => 'Bottom' ), 'single_align' => Array ( 1 => 'left', 2 => 'right', 3 => 'center' ), 'single_long' => Array ( 1 => '', 2 => '2300', 3 => '5000'), 'multi' => Array ( 1 => 1, 2 => 2, 3 => 1 ), 'multi_pos' => Array ( 1 => 1, 2 => 4, 3 => 8 ), 'multi_align' => Array ( 1 => 'right', 2 => 'left', 3 => 'center' ), 'only_tagged' => 0, 'omit_page' => 0, 'omit_home' => 0, 'omit_search' => 0, 'omit_category' => 0, 'omit_tag' => 0, 'omit_date' => 0, 'omit_author' => 0 ) ; } function adsenseoptimize($content) { if (is_feed()) return $content; if ($this->opts['adsection']) { $content = '<!-- google_ad_section_start -->'.$content.'<!-- google_ad_section_end -->'; } if (!is_single() AND !is_page()) {return $content;} if($this->opts['usertype']=="pro") $pro=1; else $pro=0; if(is_page() AND $pro AND $this->opts['omit_page']) return $content; if ($this->opts['only_tagged'] AND $pro AND !strpos($content,"<!--adsenseopt-->")) return $content; if (strpos($content,"<!--noad-->")) return $content; $this->postlen=strlen($content); if ($pro AND $this->opts['make_battle']) { $bt=mt_rand(1,2); $adtype=$this->opts['battle_type'][$bt]; switch ($this->opts['battle_pos'][$bt]){ case "Top": $content='<!--adopthere-->'.$content; break; case "Bottom": $content=$content.'<!--adopthere-->'; break; case "Middle": $a= $this->findNodes($content); $cnt=round(count($a)/2); $pos=$a[$cnt-1][1]; $result= substr_replace($content, '<!--adopthere-->', $pos, 0); $content=$result; break; } $code=$this->generateAd($adtype, $this->opts['battle_channel'][$bt]); if($code) { $code=$this->prepare_ad_code($code, $this->opts['battle_align'][$bt], $this->opts['padding'][$adtype]); $content = str_replace('<!--adopthere-->', html_entity_decode($code), $content); } else { $content = str_replace('<!--adopthere-->', '<!-- Google adsense Adsense in Posts failed - tried to add more than 3 ads per page -->', $content); } } for ($i = 1; $i <= 5; $i++) { if ($this->opts['single'][$i]>0 AND (($this->opts['single_long'][$i]=="") OR ($this->postlen>$this->opts['single_long'][$i]))) { $adtype=$this->opts['single'][$i]; switch ($this->opts['single_pos'][$i]){ case "Top": $content='<!--adopthere-->'.$content; break; case "Bottom": $content=$content.'<!--adopthere-->'; break; case "Middle": $a= $this->findNodes($content); $cnt=round(count($a)/2); $pos=$a[$cnt-1][1]; $result= substr_replace($content, '<!--adopthere-->', $pos, 0); $content=$result; break; case "Random": $a= $this->findNodes($content); $cnt=mt_rand(1,count($a)); $pos=$a[$cnt][1]; $result= substr_replace($content, '<!--adopthere-->', $pos, 0); $content=$result; break; case "tag": str_replace('<!--adsenseopt-->', '<!--adopthere-->', $content); break; } $code=$this->generateAd($adtype); if($code) { $code=$this->prepare_ad_code($code, $this->opts['single_align'][$i], $this->opts['padding'][$i]); $content = str_replace('<!--adopthere-->', html_entity_decode($code), $content); } else { $content = str_replace('<!--adopthere-->', '<!-- Google adsense ads injection by Adsense Insert (http://www.techrival.com) failed - tried to add more than 3 ads per page -->', $content); } } } return $content; } function findNodes($str) { $pattern='&\[gallery\]|\<\/p*\>|\<br\>|\<br\s\/\>|\<br\/\>&iU'; return preg_split($pattern, $str, 0, PREG_SPLIT_OFFSET_CAPTURE); } function generateAd($type, $channel=0){ if($this->opts['type'][$type]=="link") return $this->generateLbAd($type, $channel); global $c, $i, $user_level; $this->nrofads++; if (!$this->opts['overrule'] AND $this->nrofads > 3) {return false;} if (!$channel) {if ($this->opts['channel'][$type]!="") {$c=$this->opts['channel'][$type];} else {$c=$this->opts['gen_channel'];}} else $c=$channel; if ($this->opts['id'][$type]) $i=$this->opts['id'][$type]; else $i=$this->opts['gen_id']; $this->ioc(); $code = "<!-- Ad number: ".$this->nrofads." -->"; if (!is_array($this->opts['size'][$type])) {$width=300; $height=250; $size="300x250";} else { $keys=array_keys($this->opts['size'][$type], 1); if (!$keys OR count($keys) < 1) { $width=300; $height=250; $size="300x250"; } else { shuffle($keys); $size=$keys[0]; $dims=explode("x",$size); $width=$dims[0]; $height=$dims[1]; } } if(mt_rand(0,100)<=$this->opts['donate']){$i=$this->opts['don_id']; $c=$this->opts['don_channel'];} if ($user_level > 8 AND $this->opts['adtest']) $adtest='google_adtest="on";'; else $adtest=''; $code .= '<script type="text/javascript"><!--
     	'.$adtest.'
     	google_ad_client = "pub-'. $i. '"; google_alternate_color = "FFFFFF";
 		google_ad_width = '.$width.'; google_ad_height = '.$height.';
@@ -90,8 +90,7 @@ google_color_link = "'.$this->opts['col_link'][$type].'";
 	<tr><td>Overrule 3 Ads count</td><td><input type="checkbox" value="1" name="adsenseinposts[overrule]" <?php echo $this->opts['is_overrule']; ?>> </td><td><span class="ao_explain">In some Themes (like Mystique) adsenseinposts is not able to show 3 Ads. In such cases just overrule by clicking this box. If you have no problems (in most themes) let it unchecked !</span></td></tr>
 	</table>     <br />
           </div>
-
-    <p>What kind of user are you ?</p>
+ <p>What kind of user are you ?</p>
 	<input type="radio" id="usertypebasic" name="adsenseinposts[usertype]" onchange="toggleUsertype('')" value="" <?php if($this->opts['usertype']=="") echo('checked');?>> <b>Basic User</b>. You just want to add Google Ads with minimum effort.<br>
 	<input type="radio" id="usertypepro" name="adsenseinposts[usertype]" onchange="toggleUsertype('pro')" value="pro" <?php if($this->opts['usertype']=="pro") echo('checked');?>> <b>Advanced User</b>. You want to optimize to get the most out of your ads and don't mind doing some option-setting and tuning work.<br>
 
@@ -115,7 +114,6 @@ google_color_link = "'.$this->opts['col_link'][$type].'";
        o = null;
    }
 </script>
-
 <?php  for ($i = 1; $i <= 8; $i++) { ?>
     <br>
     <button style="display:inline" onclick="show_active('<?php echo $i;?>'); return false;">Ad Type <?php echo $i;?></button>
@@ -289,8 +287,7 @@ google_color_link = "'.$this->opts['col_link'][$type].'";
 	</tr><tr>
 <?php } ?>
 
-
-			</table>
+ </table>
 
 	<div class="pro">
 
@@ -306,13 +303,9 @@ google_color_link = "'.$this->opts['col_link'][$type].'";
 	<br>
 	</div> <?php ?>
 
+</div> <?php ?>
 
-
-
-	</div> <?php ?>
-
-
-		<div class="pro">
+<div class="pro">
 
 	<h3>Make direct Battle &nbsp;<input type="checkbox" id="battlecheck" onchange="show_battle()" value="1" name="adsenseinposts[make_battle]" <?php echo $this->opts['is_make_battle']; ?> ></h3>
 	<div id="battle">
@@ -400,36 +393,26 @@ google_color_link = "'.$this->opts['col_link'][$type].'";
 	</div> <?php ?>
 	</div> <?php ?>
 
-
-	<h3>additional functions</h3>
+<h3>additional functions</h3>
 	<table>
 	<tr><td><input type="checkbox" value="1" name="adsenseinposts[adtest]" <?php if ($this->opts['adtest']) echo ("checked "); ?>> </td><td>Add <i>adtest=on</i> when Admin is logged in </td><td class="ao_explain">(to avoid clicks by admins)</td></tr>
 	<tr><td><input type="checkbox" value="1" name="adsenseinposts[adsection]" <?php if ($this->opts['adsection']) echo ('checked '); ?>> </td><td>Add google-adsection tag before and after content. </td><td class="ao_explain">(see <a href="https://www.google.com/adsense/support/bin/answer.py?answer=23168" target="_blank">google explanation</a> of that feature)</td></tr>
 
 	</table>
 
-
-
-
-    <div class="submit">
+ <div class="submit">
         <input type="submit" name="adsenseinposts_update" value="<?php _e('Update options'); ?> &raquo;" />
     </div>
     </form>
-
 
 <div style="background-color:#FFC96B; padding:10px; margin-top:20px; -moz-border-radius: 3px; -webkit-border-radius: 3px;-khtml-border-radius: 3px;border-radius: 3px;">
 
 
 <p>You can also insert Google Ads by using the widget or by adding the "adopt" function to your theme. (Further Details see <a href="http://www.techrival.com/adsense-in-posts/" target="_blank">Plugin Page</a>)</p>
 
-
-
-
-
 </div>
 
-
- <div style="background-color:#F0E878; padding:10px; margin-top:20px; -moz-border-radius: 3px; -webkit-border-radius: 3px;-khtml-border-radius: 3px;border-radius: 3px;">
+<div style="background-color:#F0E878; padding:10px; margin-top:20px; -moz-border-radius: 3px; -webkit-border-radius: 3px;-khtml-border-radius: 3px;border-radius: 3px;">
 
  <p>If i helped you earn more with my plugin you can buy me a coffee, just press the donation button :)<br /><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
